@@ -8,7 +8,8 @@ local CopyButton = Instance.new("TextButton")
 local UICorner_2 = Instance.new("UICorner")
 local UIStroke_2 = Instance.new("UIStroke")
 
--- ScreenGui setup
+-- ScreenGui se
+
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
