@@ -1,87 +1,63 @@
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local UICorner = Instance.new("UICorner")
-local UIStroke = Instance.new("UIStroke")
-local UIPadding = Instance.new("UIPadding")
-local TextLabel = Instance.new("TextLabel")
-local CopyButton = Instance.new("TextButton")
-local UICorner_2 = Instance.new("UICorner")
-local UIStroke_2 = Instance.new("UIStroke")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local PlayerGui = player:WaitForChild("PlayerGui")
 
--- ScreenGui se
+local screenGui = Instance.new("ScreenGui", PlayerGui)
+screenGui.Name = "ModernDiscordGUI"
+screenGui.ResetOnSpawn = false
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+local frame = Instance.new("Frame", screenGui)
+frame.Size = UDim2.new(0, 300, 0, 160)
+frame.Position = UDim2.new(0.5, -150, 0.5, -80)
+frame.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
+frame.BorderSizePixel = 0
 
--- Main Frame
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-Frame.Size = UDim2.new(0, 350, 0, 200)
-Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
-Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+local uicorner = Instance.new("UICorner", frame)
+uicorner.CornerRadius = UDim.new(0, 16)
 
--- Frame Corner
-UICorner.Parent = Frame
-UICorner.CornerRadius = UDim.new(0, 12)
+local uistroke = Instance.new("UIStroke", frame)
+uistroke.Color = Color3.fromRGB(70, 70, 80)
+uistroke.Thickness = 1.2
+uistroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 
--- Frame Stroke
-UIStroke.Parent = Frame
-UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-UIStroke.Color = Color3.fromRGB(60, 60, 60)
-UIStroke.Thickness = 2
+local textLabel = Instance.new("TextLabel", frame)
+textLabel.Size = UDim2.new(1, -20, 0, 60)
+textLabel.Position = UDim2.new(0, 10, 0, 10)
+textLabel.BackgroundTransparency = 1
+textLabel.Text = "We're In Maintenance, Pls Wait Until We \nRevived again, It Mean We're Discontinue \nAGAIN For a while, Join Our Discord For More Info."
+textLabel.TextColor3 = Color3.fromRGB(240, 240, 240)
+textLabel.Font = Enum.Font.GothamBold
+textLabel.TextSize = 24
 
--- Frame Padding
-UIPadding.Parent = Frame
-UIPadding.PaddingBottom = UDim.new(0, 20)
-UIPadding.PaddingLeft = UDim.new(0, 20)
-UIPadding.PaddingRight = UDim.new(0, 20)
-UIPadding.PaddingTop = UDim.new(0, 20)
+local button = Instance.new("TextButton", frame)
+button.Size = UDim2.new(1, -40, 0, 40)
+button.Position = UDim2.new(0, 20, 1, -60)
+button.Text = "Join Now"
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.Font = Enum.Font.GothamMedium
+button.TextSize = 20
+button.BorderSizePixel = 0
 
--- Text Label
-TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1
-TextLabel.Size = UDim2.new(1, 0, 0.6, 0)
-TextLabel.Font = Enum.Font.GothamSemibold
-TextLabel.Text = "We Moved Into New Loadstring,\nPress Button Below To Copy New Script"
-TextLabel.TextColor3 = Color3.fromRGB(240, 240, 240)
-TextLabel.TextSize = 16
-TextLabel.TextWrapped = true
-TextLabel.TextYAlignment = Enum.TextYAlignment.Bottom
+local buttonCorner = Instance.new("UICorner", button)
+buttonCorner.CornerRadius = UDim.new(0, 12)
 
--- Copy Button
-CopyButton.Name = "CopyButton"
-CopyButton.Parent = Frame
-CopyButton.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
-CopyButton.Size = UDim2.new(1, 0, 0, 40)
-CopyButton.Font = Enum.Font.GothamBold
-CopyButton.Text = "COPY SCRIPT"
-CopyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-CopyButton.TextSize = 14
-CopyButton.Position = UDim2.new(0, 0, 0.65, 0)
+local buttonGradient = Instance.new("UIGradient", button)
+buttonGradient.Color = ColorSequence.new({
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(88, 101, 242)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(114, 137, 218))
+})
+buttonGradient.Rotation = 45
 
--- Button Corner
-UICorner_2.Parent = CopyButton
-UICorner_2.CornerRadius = UDim.new(0, 8)
+local buttonShadow = Instance.new("ImageLabel", button)
+buttonShadow.Size = UDim2.new(1, 12, 1, 12)
+buttonShadow.Position = UDim2.new(0, -6, 0, -6)
+buttonShadow.BackgroundTransparency = 1
+buttonShadow.Image = "rbxassetid://1316045217"
+buttonShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+buttonShadow.ImageTransparency = 0.6
+buttonShadow.ZIndex = 0
 
--- Button Stroke
-UIStroke_2.Parent = CopyButton
-UIStroke_2.Color = Color3.fromRGB(255, 255, 255)
-UIStroke_2.Thickness = 0.5
-
--- Button Click Function
-CopyButton.MouseButton1Click:Connect(function()
-    setclipboard("loadstring(game:HttpGet("https://raw.githubusercontent.com/CodeE4X-dev/Star-X/refs/heads/main/Blade-BallV3"))()") -- Replace with your actual loadstring
-    CopyButton.Text = "COPIED!"
-    task.wait(2)
-    CopyButton.Text = "COPY SCRIPT"
-end)
-
--- Button Hover Effects
-CopyButton.MouseEnter:Connect(function()
-    CopyButton.BackgroundColor3 = Color3.fromRGB(0, 140, 255)
-end)
-
-CopyButton.MouseLeave:Connect(function()
-    CopyButton.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+-- OnClick action (replace with your Discord link logic)
+button.MouseButton1Click:Connect(function()
+	setclipboard("https://discord.gg/starx-hub") -- or open with `syn.request` in executor
 end)
