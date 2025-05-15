@@ -1,4 +1,66 @@
 -- loadstring(game:HttpGet("https://raw.githubusercontent.com/CodeE4X-dev/StarX/refs/heads/main/Blade-Ball.lua", true))()
 --jwjjdiw
 --isa was here discord.gg/starx-hub hhdggdgdgdgdgdgdgdgdgdgdgdgloadsg
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/5c592d1179052813e2f1430f93250a6c.lua"))()
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local PlayerGui = player:WaitForChild("PlayerGui")
+
+local screenGui = Instance.new("ScreenGui", PlayerGui)
+screenGui.Name = "ModernDiscordGUI"
+screenGui.ResetOnSpawn = false
+
+local frame = Instance.new("Frame", screenGui)
+frame.Size = UDim2.new(0, 300, 0, 160)
+frame.Position = UDim2.new(0.5, -150, 0.5, -80)
+frame.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
+frame.BorderSizePixel = 0
+
+local uicorner = Instance.new("UICorner", frame)
+uicorner.CornerRadius = UDim.new(0, 16)
+
+local uistroke = Instance.new("UIStroke", frame)
+uistroke.Color = Color3.fromRGB(70, 70, 80)
+uistroke.Thickness = 1.2
+uistroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+
+local textLabel = Instance.new("TextLabel", frame)
+textLabel.Size = UDim2.new(1, -20, 0, 60)
+textLabel.Position = UDim2.new(0, 10, 0, 10)
+textLabel.BackgroundTransparency = 1
+textLabel.Text = "We're In Maintenance, Pls Wait Until We \nRevived again, It Mean We're Discontinue \nAGAIN For a while, Join Our Discord For More Info."
+textLabel.TextColor3 = Color3.fromRGB(240, 240, 240)
+textLabel.Font = Enum.Font.GothamBold
+textLabel.TextSize = 24
+
+local button = Instance.new("TextButton", frame)
+button.Size = UDim2.new(1, -40, 0, 40)
+button.Position = UDim2.new(0, 20, 1, -60)
+button.Text = "Join Now"
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.Font = Enum.Font.GothamMedium
+button.TextSize = 20
+button.BorderSizePixel = 0
+
+local buttonCorner = Instance.new("UICorner", button)
+buttonCorner.CornerRadius = UDim.new(0, 12)
+
+local buttonGradient = Instance.new("UIGradient", button)
+buttonGradient.Color = ColorSequence.new({
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(88, 101, 242)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(114, 137, 218))
+})
+buttonGradient.Rotation = 45
+
+local buttonShadow = Instance.new("ImageLabel", button)
+buttonShadow.Size = UDim2.new(1, 12, 1, 12)
+buttonShadow.Position = UDim2.new(0, -6, 0, -6)
+buttonShadow.BackgroundTransparency = 1
+buttonShadow.Image = "rbxassetid://1316045217"
+buttonShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+buttonShadow.ImageTransparency = 0.6
+buttonShadow.ZIndex = 0
+
+-- OnClick action (replace with your Discord link logic)
+button.MouseButton1Click:Connect(function()
+	setclipboard("https://discord.gg/starx-hub") -- or open with `syn.request` in executor
+end)
